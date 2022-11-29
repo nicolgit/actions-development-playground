@@ -13,11 +13,14 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v3
 
-      - name: Set current date as env variable
-        run: echo "NOW::$(date +'%Y-%m-%dT%H:%M:%S')" >> $GITHUB_ENV
-        
-      - name: Echo current date
-        run: echo $NOW
+      - name: Set the value
+        id: step_one
+        run: |
+          echo "action_state={$(date)}" >> $GITHUB_ENV
+      - name: Use the value
+        id: step_two
+        run: |
+          echo "${{ env.action_state }}"
         
       # Runs a single command using the runners shell
       - name: Run a one-line script
@@ -26,5 +29,5 @@ jobs:
       # Runs a set of commands using the runners shell
       - name: Run a multi-line script
         run: |
-          ls -lRA
+          ls -la
           echo test, and deploy your project.
