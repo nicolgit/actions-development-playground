@@ -24,7 +24,7 @@ jobs:
         run: |
           echo "build timestamp: ${{ env.build_timestamp }}"
           echo "run number: ${{ github.run_number }}"
-          sed -i 's/__BUILDDATE__/${{ env.build_timestamp }} build ${{ github.run_number }}/g' subdir/another-file.md  
+          sed -i 's/__BUILDDATE__/${{ env.build_timestamp }} (build ${{ github.run_number }})/g' subdir/another-file.md  
           cat subdir/another-file.md
           
       # Runs a set of commands using the runners shell
