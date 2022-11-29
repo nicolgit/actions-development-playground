@@ -23,7 +23,7 @@ jobs:
         id: step_replace
         run: |
           echo "build timestamp: ${{ env.build_timestamp }}"
-          echo "build timestamp: ${{ env }}"
+          echo "run number: ${{ github.run_number }}"
           sed -i 's/__BUILDDATE__/${{ env.build_timestamp }}/g' subdir/another-file.md  
           cat subdir/another-file.md
           
