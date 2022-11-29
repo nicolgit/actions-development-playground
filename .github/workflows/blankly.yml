@@ -17,9 +17,9 @@ jobs:
         id: step_build_date_and_time
         run: |
           echo "action_state=$(date)" >> $GITHUB_ENV
-          cat subdir\another-file.md
-          sed 's/__BUILDDATE__/$(date)/g' subdir\another-file.md          
-          cat subdir\another-file.md
+          cat subdir/another-file.md
+          sed 's/__BUILDDATE__/$(date)/g' subdir/another-file.md          
+          cat subdir/another-file.md
 
       - name: Use the value
         id: step_two
