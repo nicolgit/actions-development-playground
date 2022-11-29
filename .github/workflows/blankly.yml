@@ -16,14 +16,14 @@ jobs:
       - name: Set the build date and time
         id: step_build_date_and_time
         run: |
-          echo "action_state=$(date)" >> $GITHUB_ENV
+          echo "build_timestamp=$(date)" >> $GITHUB_ENV
           cat subdir/another-file.md
 
       - name: Use the build date
         id: step_two
         run: |
-          echo "${{ env.action_state }}"
-          sed 's/__BUILDDATE__/"{{ env.action_state }}/g' subdir/another-file.md 
+          echo "build timestamp: ${{ env.build_timestamp }}"
+          sed 's/__BUILDDATE__/${{ env.build_timestamp }}/g' subdir/another-file.md 
           cat subdir/another-file.md
         
       # Runs a single command using the runners shell
