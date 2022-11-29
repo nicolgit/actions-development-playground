@@ -18,7 +18,7 @@ jobs:
         run: |
           echo "build_timestamp=$(date)" >> $GITHUB_ENV
           cat subdir/another-file.md
-          sed -i 's/__BUILDDATE__/${{ env.build_timestamp }}/g' subdir/another-file.md  
+          sed -i 's/__BUILDDATE__/$(date)/g' subdir/another-file.md  
           cat subdir/another-file.md
         
       - name: Use the build date
