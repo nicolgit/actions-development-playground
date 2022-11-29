@@ -23,7 +23,7 @@ jobs:
         id: step_two
         run: |
           echo "build timestamp: ${{ env.build_timestamp }}"
-          sed 's/__BUILDDATE__/${{ env.build_timestamp }}/g' subdir/another-file.md 
+          sed 's/__BUILDDATE__/${{ env.build_timestamp }}/g' subdir/another-file.md > subdir/another-file.md 
           cat subdir/another-file.md
         
       # Runs a single command using the runners shell
