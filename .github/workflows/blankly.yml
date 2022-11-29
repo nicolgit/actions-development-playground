@@ -18,13 +18,13 @@ jobs:
         run: |
           echo "action_state=$(date)" >> $GITHUB_ENV
           cat subdir/another-file.md
-          sed 's/__BUILDDATE__/"${{ env.action_state }}"/g' subdir/another-file.md 
-          cat subdir/another-file.md
 
-      - name: Use the value
+      - name: Use the build date
         id: step_two
         run: |
           echo "${{ env.action_state }}"
+          sed 's/__BUILDDATE__/"{{ env.action_state }}/g' subdir/another-file.md 
+          cat subdir/another-file.md
         
       # Runs a single command using the runners shell
       - name: Run a one-line script
