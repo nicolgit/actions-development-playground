@@ -13,10 +13,14 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it.
       - uses: actions/checkout@v3
 
-      - name: Set the value
-        id: step_one
+      - name: Set the build date and time
+        id: step_build_date_and_time
         run: |
           echo "action_state=$(date)" >> $GITHUB_ENV
+          cat subdir\another-file.md
+          sed 's/__BUILDDATE__/$(date)/g' subdir\another-file.md          
+          cat subdir\another-file.md
+
       - name: Use the value
         id: step_two
         run: |
