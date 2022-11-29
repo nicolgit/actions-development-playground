@@ -20,16 +20,12 @@ jobs:
           cat subdir/another-file.md
 
       - name: Use the build date
-        id: step_two
+        id: step_replace
         run: |
           echo "build timestamp: ${{ env.build_timestamp }}"
-          sed 's/__BUILDDATE__/${{ env.build_timestamp }}/g' subdir/another-file.md > subdir/another-file.md 
+          sed -i 's/__BUILDDATE__/${{ env.build_timestamp }}/g' subdir/another-file.md  
           cat subdir/another-file.md
         
-      # Runs a single command using the runners shell
-      - name: Run a one-line script
-        run: echo my first step
-
       # Runs a set of commands using the runners shell
       - name: Run a multi-line script
         run: |
